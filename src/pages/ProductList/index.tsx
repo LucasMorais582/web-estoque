@@ -25,12 +25,14 @@ const ProductList: React.FC = () => {
   return (
     <>
       <Title>Controle de Estoque de Produtos</Title>
+
       <Link to={`/product-create`}>
         <Button type="submit"> Cadastrar Novos Produtos </Button>
       </Link>
       <Link to={`/category`}>
         <Button type="submit"> Ver Categorias </Button>
       </Link>
+
       <Products>
         {products.map((product: Product) => (
           <Link key={product.id}  to={`/product/${product.id}`}>
@@ -44,7 +46,7 @@ const ProductList: React.FC = () => {
         ))}
       </Products>
     </>
-  )
+  );
 }
 
 export default ProductList;

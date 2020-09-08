@@ -34,6 +34,7 @@ const CategoryList: React.FC = () => {
       <Link to={`/category-create`}>
         <Button type="submit"> Cadastrar Novas Categorias </Button>
       </Link>
+
       <Categories>
         {categories.map((category: Category) => (
           <Link key={category.id}  to={`/category/${category.id}`}>
@@ -46,7 +47,7 @@ const CategoryList: React.FC = () => {
         ))}
       </Categories>
     </>
-  )
+  );
 }
 
 export default CategoryList;

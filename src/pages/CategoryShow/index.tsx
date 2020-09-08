@@ -22,6 +22,8 @@ const CategoryShow: React.FC = () => {
   useEffect(() => {
     api.get(`/category/${params.id}`).then(response => {
       setCategory(response.data);
+    }).catch(Error => {
+      history.push('/category');
     });
   }, [params.id]);
 
@@ -29,6 +31,7 @@ const CategoryShow: React.FC = () => {
     try{
       await api.delete(`/category/${category_id}`);
       history.push('/category');
+
     } catch(error){
         return (error);
     }
