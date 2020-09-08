@@ -2,8 +2,6 @@
 
 Aplicação gerencia produtos em estoque.
 
-<img src=src/assets/github-explorer.jpg>
-
 Ela trabalha em conjunto com o projeto [api-products](https://github.com/LucasMorais582/api-products) para realizar as operações de listagem, visualização, cadastro, edição e exclusão de produtos.
 
 ## Tecnologias
