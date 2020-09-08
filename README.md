@@ -1,11 +1,10 @@
-# github-explorer
+# web-estoque
 
-Aplicação que utiliza as ferramentas mais atuais disponíveis nas bibliotecas do ES6, ES7 e ES8 para realizar 
-buscas de repositórios no Github.
+Aplicação gerencia produtos em estoque.
 
 <img src=src/assets/github-explorer.jpg>
 
-Ela consome a api do github através do Axios e realiza a estilização das páginas com o auxílio da biblioteca styled components.
+Ela trabalha em conjunto com o projeto [api-products](https://github.com/LucasMorais582/api-products) para realizar as operações de listagem, visualização, cadastro, edição e exclusão de produtos.
 
 ## Tecnologias
 
@@ -20,7 +19,7 @@ Ela consome a api do github através do Axios e realiza a estilização das pág
 
 Clonando o projeto
 ```
-git clone https://github.com/LucasMorais582/github-explorer.git
+git clone https://github.com/LucasMorais582/web-estoque.git
 ```
 Após acessar o diretório do projeto, rodar o comando no terminal para baixar a node_modules:
 ```
