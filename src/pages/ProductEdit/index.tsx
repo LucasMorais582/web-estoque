@@ -78,10 +78,7 @@ const ProductEdit: React.FC = () => {
     {product && (
         <div>
           <header>
-            {product.image &&
-              <img src={`data:image/jpeg;base64,${product.image}`} alt="Imagem"/>
-            }
-            {!product.image && <Dropzone onFileUploaded={setImage}/>}
+          <Dropzone onFileUploaded={setImage}/>
             <Data>
               <p>Nome <textarea onChange={ e => setName(e.target.value)}>{product.name}</textarea></p>
               <p>Preço <textarea onChange={ e => setPrice(e.target.value)} >{product.price}</textarea></p>
