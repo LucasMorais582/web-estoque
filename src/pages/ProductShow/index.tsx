@@ -32,14 +32,14 @@ const ProductShow: React.FC = () => {
     api.get(`/product/${params.id}`).then(response => {
       setProduct(response.data);
     }).catch(Error => {
-      history.push('/product');
+      history.push('/');
     });
   }, [params.id]);
 
   async function handleDeleteProduct(product_id: Number){
     try{
       await api.delete(`/product/${product_id}`);
-      history.push('/product');
+      history.push('/');
 
     } catch(error){
         return error;
@@ -50,7 +50,7 @@ const ProductShow: React.FC = () => {
   return (
     <>
     <Header>
-      <Link to="/product">
+      <Link to="/">
         <FiChevronLeft size={30}/>
         Voltar
       </Link>

@@ -13,7 +13,7 @@ import CategoryEdit from '../pages/CategoryEdit';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path='/product' exact component={ ProductList } />
+    <Route path='/' exact component={ ProductList } />
     <Route path='/product/:id' component={ ProductShow } />
     <Route path='/product-create' component={ ProductCreate } />
     <Route path='/product-edit/:id' component={ ProductEdit } />

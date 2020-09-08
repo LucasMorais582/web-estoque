@@ -23,7 +23,7 @@ const CategoryList: React.FC = () => {
   return (
     <>
       <Header>
-        <Link to="/product">
+        <Link to="/">
           <FiChevronLeft size={30}/>
           Voltar
         </Link>

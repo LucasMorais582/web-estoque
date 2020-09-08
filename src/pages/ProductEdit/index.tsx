@@ -47,7 +47,7 @@ const ProductEdit: React.FC = () => {
 
     try{
       await api.patch(`/product/${product?.id}`, data);
-      history.push('/product');
+      history.push('/');
 
     } catch(error){
         return error;
@@ -58,7 +58,7 @@ const ProductEdit: React.FC = () => {
   return (
     <>
     <Header>
-      <Link to="/product">
+      <Link to="/">
         <FiChevronLeft size={30}/>
         Voltar
       </Link>
