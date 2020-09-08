@@ -10,6 +10,7 @@ interface Product {
   name: string;
   price: number;
   description: string;
+  image: string;
   category_id: number;
 }
 
@@ -36,7 +37,10 @@ const ProductList: React.FC = () => {
       <Products>
         {products.map((product: Product) => (
           <Link key={product.id}  to={`/product/${product.id}`}>
-            <img src={imageBox} alt="Imagem"/>
+            {product.image &&
+              <img src={`data:image/jpeg;base64,${product.image}`} alt="Imagem"/>
+            }
+            {!product.image && <img src={imageBox} alt="Imagem"/>}
             <div>
               <strong>{product.name}</strong>
               <p>{product.description}</p>

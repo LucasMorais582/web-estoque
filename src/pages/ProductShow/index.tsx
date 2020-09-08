@@ -10,6 +10,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
+  image: string;
   category_id: number;
 }
 
@@ -62,7 +63,10 @@ const ProductShow: React.FC = () => {
         <div>
           {product && (
               <header>
-                <img src={imageBox} alt="imagem"/>
+                {product.image &&
+                   <img src={`data:image/jpeg;base64,${product.image}`} alt="Imagem"/>
+                }
+                {!product.image && <img src={imageBox} alt="Imagem"/>}
                   <Description>
                     <strong>{product.name}</strong>
                     <p><b>Preço: </b>{formatter.format(product.price)}</p>

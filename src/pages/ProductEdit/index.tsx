@@ -10,6 +10,7 @@ interface Product {
   name: string;
   description: string;
   price: any;
+  image: string;
   category_id: number;
 }
 
@@ -70,7 +71,10 @@ const ProductEdit: React.FC = () => {
     {product && (
           <div>
             <header>
-              <img src={imageBox} alt="Imagem"/>
+              {product.image &&
+                <img src={`data:image/jpeg;base64,${product.image}`} alt="Imagem"/>
+              }
+              {!product.image && <img src={imageBox} alt="Imagem"/>}
               <Data>
                 <p>Nome <textarea onChange={ e => setName(e.target.value)}>{product.name}</textarea></p>
                 <p>Preço <textarea onChange={ e => setPrice(e.target.value)} >{product.price}</textarea></p>

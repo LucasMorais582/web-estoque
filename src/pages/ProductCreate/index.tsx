@@ -64,7 +64,7 @@ const ProductCreate: React.FC = () => {
       setinputErrorDescription('');
 
       await api.post(`product`, data);
-      history.push('/product');
+      history.push('/');
     } catch(error){
         console.log(error);
     }
