@@ -3,7 +3,7 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { useRouteMatch, Link, useHistory } from 'react-router-dom';
 import { Header, Product, Title, Data } from './styles';
 import api from '../../services/api';
-import imageBox from '../../assets/caixas.jpg';
+import Dropzone from '../../components/Dropzone';
 
 interface Product {
   id: number;
@@ -26,6 +26,7 @@ const ProductEdit: React.FC = () => {
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
+  const [image, setImage] = useState<File>();
   const [product, setProduct] = useState<Product | null>();
 
   useEffect(() => {
@@ -39,15 +40,21 @@ const ProductEdit: React.FC = () => {
   async function handleUpdateProduct(e: { preventDefault: () => void; }){
     e.preventDefault();
 
+    const form = new FormData();
     const data = {
       name: name ? name : product?.name,
       price: parseFloat(price) ? parseFloat(price): product?.price,
       description: description ? description : product?.description,
-      category_id: parseInt(category)
+      category_id: parseInt(category),
     };
 
     try{
       await api.patch(`/product/${product?.id}`, data);
+
+      if(image){
+        form.append('file', image);
+        await api.post(`/product/${product?.id}/sendPhoto`, form);
+      }
       history.push('/');
 
     } catch(error){
@@ -69,21 +76,21 @@ const ProductEdit: React.FC = () => {
 
     <Product>
     {product && (
-          <div>
-            <header>
-              {product.image &&
-                <img src={`data:image/jpeg;base64,${product.image}`} alt="Imagem"/>
-              }
-              {!product.image && <img src={imageBox} alt="Imagem"/>}
-              <Data>
-                <p>Nome <textarea onChange={ e => setName(e.target.value)}>{product.name}</textarea></p>
-                <p>Preço <textarea onChange={ e => setPrice(e.target.value)} >{product.price}</textarea></p>
-                <p>Descrição <textarea onChange={ e => setDescription(e.target.value)}>{product.description}</textarea></p>
-              </Data>
-            </header>
-            <form onSubmit={ handleUpdateProduct }>
-              <button type="submit"> Salvar </button>
-            </form>
+        <div>
+          <header>
+            {product.image &&
+              <img src={`data:image/jpeg;base64,${product.image}`} alt="Imagem"/>
+            }
+            {!product.image && <Dropzone onFileUploaded={setImage}/>}
+            <Data>
+              <p>Nome <textarea onChange={ e => setName(e.target.value)}>{product.name}</textarea></p>
+              <p>Preço <textarea onChange={ e => setPrice(e.target.value)} >{product.price}</textarea></p>
+              <p>Descrição <textarea onChange={ e => setDescription(e.target.value)}>{product.description}</textarea></p>
+            </Data>
+          </header>
+          <form onSubmit={ handleUpdateProduct }>
+            <button type="submit"> Salvar </button>
+          </form>
         </div>
       )}
     </Product>

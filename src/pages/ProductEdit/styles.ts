@@ -64,7 +64,6 @@ export const Product = styled.form`
   div {
       background: #F0F0F5;
       border-radius: 5px;
-      width: 100%;
       min-height: 300px;
       padding: 24px;
       display: block;
