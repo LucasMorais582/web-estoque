@@ -17,7 +17,7 @@ const Routes: React.FC = () => (
     <Route path='/product/:id' component={ ProductShow } />
     <Route path='/product-create' component={ ProductCreate } />
     <Route path='/product-edit/:id' component={ ProductEdit } />
-    <Route path='/category' component={ CategoryList } />
+    <Route path='/category' exact component={ CategoryList } />
     <Route path='/category/:id' component={ CategoryShow } />
     <Route path='/category-create' component={ CategoryCreate } />
     <Route path='/category-edit/:id' component={ CategoryEdit } />
